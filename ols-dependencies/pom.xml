@@ -151,39 +151,13 @@
     </dependencyManagement>
 
     <repositories>
-
-        <repository>
-            <id>maven-neo4j</id>
-            <name>Maven Neo4j</name>
-            <url>https://m2.neo4j.org/content/repositories/releases/</url>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-        </repository>
-
-        <repository>
-            <id>spring-releases</id>
-            <name>Spring Releases</name>
-            <url>https://repo.spring.io/libs-release</url>
-        </repository>
-
-        <repository>
-            <id>repo.spring.io</id>
-            <name>repo.spring.io-releases</name>
-            <url>http://repo.spring.io/libs-milestone-local</url>
-        </repository>
-
-        <repository>
-            <id>neo4j</id>
-            <name>Neo4j</name>
-            <url>http://m2.neo4j.org/content/repositories/releases/</url>
-        </repository>
-
-        <repository>
+		<!--
+         <repository>
             <id>jcenter-snapshots</id>
             <name>jcenter</name>
             <url>https://jcenter.bintray.com/</url>
-        </repository>
+			</repository>
+		-->
         <repository>
             <id>sonatype-nexus-snapshots</id>
             <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
@@ -193,7 +167,19 @@
             <snapshots>
                 <enabled>true</enabled>
             </snapshots>
-        </repository>
+		</repository>
+		<repository>
+   	        <id>maven-central</id>
+   	        <name>Maven Central</name>
+   	        <url>https://repo1.maven.org/maven2/</url>
+   	        <releases>
+   	            <enabled>true</enabled>
+   	        </releases>
+   	        <snapshots>
+   	            <enabled>true</enabled>
+   	        </snapshots>
+		</repository>
+
     </repositories>
     
     <distributionManagement>

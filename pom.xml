@@ -64,7 +64,7 @@
 
     <scm>
    		<connection>scm:git:https://github.com/EBISPOT/ols.git</connection>
-   		<url>http://github.com/github.com/EBISPOT/ols</url>
+   		<url>https://github.com/EBISPOT/ols</url>
    		<developerConnection>scm:git:https://github.com/EBISPOT/ols.git</developerConnection>
    	  <tag>3.2.0.RELEASE</tag>
     </scm>
@@ -94,10 +94,20 @@
    	        <snapshots>
    	            <enabled>true</enabled>
    	        </snapshots>
-   	    </repository>
+		</repository>
+   	    <repository>
+   	        <id>maven-central</id>
+   	        <name>Maven Central</name>
+   	        <url>https://repo1.maven.org/maven2/</url>
+   	        <releases>
+   	            <enabled>true</enabled>
+   	        </releases>
+   	        <snapshots>
+   	            <enabled>true</enabled>
+   	        </snapshots>
+		</repository>
    	</repositories>
    	
-
     <properties>
         <maven.javadoc.failOnError>false</maven.javadoc.failOnError>
         <platform.version>1.2.0</platform.version>
