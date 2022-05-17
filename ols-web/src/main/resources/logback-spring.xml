@@ -18,7 +18,7 @@
         <appender-ref ref="CONSOLE" />
         <appender-ref ref="FILE" />
     </root>
-    <logger name="uk.ac.ebi.spot.ols" additivity="false" level="debug">
+    <logger name="uk.ac.ebi.spot.ols" additivity="false" level="warn">
         <appender-ref ref="CONSOLE" />
         <appender-ref ref="FILE"/>
     </logger>

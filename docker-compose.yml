@@ -10,6 +10,7 @@ services:
           - ols-solr-data:/var/solr
           - ./ols-solr/src/main/solr-5-config:/mnt/solr-config
         command: ["-Dsolr.solr.home=/mnt/solr-config", "-Dsolr.data.dir=/var/solr", "-f"]
+
     mongo:
       image: mongo:3.2.9
       ports:
@@ -17,7 +18,8 @@ services:
       volumes:
           - ols-mongo-data:/data/db
       command:
-          - mongod
+          - "--quiet"
+
     ols-config-importer:
       build:
           context: .
@@ -42,6 +44,7 @@ services:
       depends_on:
         ols-config-importer:
           condition: service_completed_successfully
+
     ols-web:
       build:
           context: .
