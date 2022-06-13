@@ -20,6 +20,17 @@ services:
       command:
           - "--quiet"
 
+    # For easier development, expect olsync as a sibling directory. Move to Git submodule later.
+    olsync:
+      build: ../olsync
+      environment:
+        - OLSYNC_API_URLs=https://terminology.nfdi4chem.de/ts/api/ https://terminology.nfdi4ing.de/ts4ing/api/
+        - OLSYNC_CONFIG_FILE=/app/obo-config.yaml
+          # for testing
+        - OLSYNC_MAX_ONTOLOGIES=1
+      volumes:
+        - olsync:/app
+
     maven-builder:
       build: .
       volumes:
@@ -30,9 +41,13 @@ services:
       environment:
         - spring.data.mongodb.host=mongo
       volumes:
-        - ./config:/config
+        - olsync:/config
         - package:/package
-      depends_on: ["mongo"]
+      depends_on:
+        mongo:
+          condition: service_started
+        olsync:
+          condition: service_completed_successfully
       restart: on-failure:2
 
     ols-indexer:
@@ -76,9 +91,11 @@ services:
         - package:/package
       ports:
       - 8080:8080
+
 volumes:
     ols-solr-data:
     ols-mongo-data:
     ols-neo4j-data:
     ols-downloads:
     package:
+    olsync:
