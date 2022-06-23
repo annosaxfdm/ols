@@ -170,15 +170,9 @@
         <repository>
             <id>repo.spring.io</id>
             <name>repo.spring.io-releases</name>
-            <url>http://repo.spring.io/libs-milestone-local</url>
+            <url>https://repo.spring.io/libs-milestone-local</url>
         </repository>
-
-        <repository>
-            <id>neo4j</id>
-            <name>Neo4j</name>
-            <url>http://m2.neo4j.org/content/repositories/releases/</url>
-        </repository>
-
+   
         <repository>
             <id>jcenter-snapshots</id>
             <name>jcenter</name>
