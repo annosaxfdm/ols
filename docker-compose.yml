@@ -32,7 +32,7 @@ services:
       volumes:
         - ./config:/config
         - package:/package
-      depends_on: ["mongo", "maven-builder"]
+      depends_on: ["mongo"]
       restart: on-failure:2
 
     ols-indexer:
