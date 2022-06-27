@@ -11,3 +11,4 @@ OLS_logo_and_family
 !ols-apps/ols-loading-app/target/ols-indexer.jar
 !ols-solr/src/main/solr-5-config
 data
+**/target

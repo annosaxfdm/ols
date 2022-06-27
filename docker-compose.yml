@@ -20,35 +20,36 @@ services:
       command:
           - "--quiet"
 
+    maven-builder:
+      build: .
+      volumes:
+          - package:/package
+
     ols-config-importer:
-      build:
-          context: .
-          dockerfile: ./ols-apps/ols-config-importer/Dockerfile
+      build: ./ols-apps/ols-config-importer
       environment:
         - spring.data.mongodb.host=mongo
       volumes:
         - ./config:/config
-      depends_on: ["mongo"]
+        - package:/package
+      depends_on: ["mongo", "maven-builder"]
       restart: on-failure:2
 
     ols-indexer:
-      build:
-          context: .
-          dockerfile: ./ols-apps/ols-indexer/Dockerfile
+      build: ./ols-apps/ols-indexer
       environment:
         - spring.data.solr.host=http://solr:8983/solr
         - spring.data.mongodb.host=mongo
       volumes:
         - ols-neo4j-data:/mnt/neo4j
         - ols-downloads:/mnt/downloads
+        - package:/package
       depends_on:
         ols-config-importer:
           condition: service_completed_successfully
 
     ols-web:
-      build:
-          context: .
-          dockerfile: ols-web/Dockerfile
+      build: ./ols-web
       depends_on:
         ols-indexer:
           condition: service_completed_successfully
@@ -72,6 +73,7 @@ services:
       volumes:
         - ols-neo4j-data:/mnt/neo4j
         - ols-downloads:/mnt/downloads
+        - package:/package
       ports:
       - 8080:8080
 volumes:
@@ -79,3 +81,4 @@ volumes:
     ols-mongo-data:
     ols-neo4j-data:
     ols-downloads:
+    package:
