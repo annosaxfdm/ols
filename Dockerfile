@@ -5,13 +5,20 @@ USER root
 WORKDIR /opt/ols
 COPY --link . .
 COPY --link build-fix /root/build-fix
-RUN --mount=type=cache,target=/root/.m2 mkdir -p /root/.m2/repository && cp -r /root/build-fix/* /root/.m2/repository/
-RUN --mount=type=cache,target=/root/.m2 mvn -B -T 1C package -DskipTests
+RUN --mount=type=cache,target=/root/.m2 if [ ! -d "/root/.m2/repository/org/neo4j/neo4j-cypher-dsl/2.0.1/" ] ; \
+    then mkdir -p /root/.m2/repository \
+    && cp -r /root/build-fix/org /root/.m2/repository/ \
+    ; fi
+# For unknown reasons, all jar files under ols-apps/*/target were missing after the run step.
+# Many hours were spend trying to identify the problem but in the end the workaround was used to copy it into the /package directory in the builder image.
+RUN --mount=type=cache,target=/root/.m2 mvn package -T 1C -DskipTests -Dmaven.artifact.threads=100 \
+ && mkdir -p /package \
+ && cp /opt/ols/ols-apps/*/target/*.jar /package \
+ && cp /opt/ols/*/target/*.war /package
 
 FROM busybox
 WORKDIR /package
-COPY --link --from=build /opt/ols/ols-apps/*/target/*.jar /package
-COPY --link --from=build /opt/ols/*/target/*.war /package
+COPY --link --from=build /package /package
 RUN ls -lah /package
-# data container, don't run
+## data container, don't run
 ENTRYPOINT ["/bin/true"]
