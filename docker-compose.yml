@@ -1,4 +1,3 @@
-
 services:
     solr:
         image: ebispot/ols-solr:latest
@@ -24,10 +23,9 @@ services:
     olsync:
       build: ../olsync
       environment:
-        - OLSYNC_API_URLs=https://terminology.nfdi4chem.de/ts/api/ https://terminology.nfdi4ing.de/ts4ing/api/
+        - OLSYNC_API_URLS=${OLSYNC_API_URLS}
         - OLSYNC_CONFIG_FILE=/app/obo-config.yaml
-          # for testing
-        - OLSYNC_MAX_ONTOLOGIES=1
+        - OLSYNC_MAX_ONTOLOGIES=${OLSYNC_MAX_ONTOLOGIES}
       volumes:
         - olsync:/app
 
@@ -40,8 +38,11 @@ services:
       build: ./ols-apps/ols-config-importer
       environment:
         - spring.data.mongodb.host=mongo
+        - ols.ontology.config=file:///config/ols-config.yaml
+        - ols.obofoundry.ontology.config=file:///olsync/obo-config.yaml
       volumes:
-        - olsync:/config
+        - olsync:/olsync
+        - ./config:/config
         - package:/package
       depends_on:
         mongo:
@@ -72,18 +73,19 @@ services:
         - solr
         - mongo
       environment:
+        - ols.customisation.debrand=true
         - spring.data.solr.host=http://solr:8983/solr
         - spring.data.mongodb.host=mongo
-        - ols.customisation.logo=${LOGO}
-        - ols.customisation.title=${TITLE}
-        - ols.customisation.short-title=${SHORT_TITLE}
-        - ols.customisation.web=${WEB}
-        - ols.customisation.twitter=${TWITTER}
-        - ols.customisation.org=${ORG}
-        - ols.customisation.backgroundImage=${BACKGROUND_IMAGE}
-        - ols.customisation.backgroundColor=${BACKGROUND_COLOR}
-        - ols.customisation.issuesPage=${ISSUES_PAGE}
-        - ols.customisation.supportMail=${SUPPORT_MAIL}
+        - ols.customisation.logo=/img/logo-blue.svg
+        - ols.customisation.title=Anthropological Notation Ontology
+        - ols.customisation.short-title=ANNO
+        - ols.customisation.web=https://annosaxfdm.de
+        - ols.customisation.twitter=
+        - ols.customisation.org=https://annosaxfdm.de/contact/
+        - ols.customisation.backgroundImage=/img/background_trial.jpg
+        - ols.customisation.backgroundColor=#0080FF
+        - ols.customisation.issuesPage=https://github.com/annosaxfdm/ols/issues
+        - ols.customisation.supportMail=
         - OLS_HOME=/mnt/
       volumes:
         - ols-neo4j-data:/mnt/neo4j

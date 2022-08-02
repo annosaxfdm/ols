@@ -1,4 +1,21 @@
 "@context":
 
 ontologies:
-
+- activity_status: active
+  build: {checkout: 'git clone https://github.com/EBISPOT/duo.git', path: ., system: git}
+  contact: {email: mcourtot@gmail.com, github: mcourtot, label: Melanie Courtot}
+  description: ANNO is an ontology for anthropological notation
+  homepage: https://annosaxfdm.de
+  id: anno
+  layout: ontology_detail
+  license: {label: CC-BY, logo: 'http://mirrors.creativecommons.org/presskit/buttons/80x15/png/by.png',
+            url: 'http://creativecommons.org/licenses/by/3.0/'}
+  ontology_purl: https://github.com/annosaxfdm/ols/releases/download/22.08/anno.owl
+  products:
+    - {id: anno.owl, ontology_purl: 'https://github.com/annosaxfdm/ols/releases/download/22.08/anno.owl'}
+  title: The Anthropological Notation Ontology
+  tracker: https://github.com/annosaxfdm/ols
+  preferred_root_term:
+    - https://www.test.de/ontologies/ont#Anatomical_location
+    - https://www.test.de/ontologies/ont#Bone
+    - https://www.test.de/ontologies/ont#Landmark
