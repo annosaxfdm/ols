@@ -1,4 +1,15 @@
-# OLS
+# ANNO OLS
+
+This is an adapted fork of [OLS](https://github.com/EBISPOT/OLS) for the [ANNO](annosaxfdm.de/) ontology.
+
+## Setup
+
+    git clone git@github.com:annosaxfdm/ols.git
+    cd ols
+    cp .env.dist .env
+    docker compose up --build
+
+## Original OLS Documentation
 
 Ontology Lookup Service from SPOT at EBI.
 
@@ -122,10 +133,3 @@ It is possible to customise several branding options in `ols-web/src/main/resour
 * `ols.customisation.ontologyAlias` — A custom word or phrase to use instead of "Ontology", e.g. "Data Dictionary"
 * `ols.customisation.ontologyAliasPlural` — As `ontologyAlias` but plural, e.g. "Data Dictionaries"
 * `ols.customisation.oxoUrl` — The URL of an OxO instance to link to with a trailing slash e.g. `https://www.ebi.ac.uk/spot/oxo/`
-
-
-
-
-
-
-
