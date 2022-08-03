@@ -3,8 +3,8 @@ services:
         image: ebispot/ols-solr:latest
         environment:
           - SOLR_HOME=/mnt/solr-config
-        ports:
-          - 8983:8983
+        #ports:
+        #  - 8983:8983
         volumes:
           - ols-solr-data:/var/solr
           - ./ols-solr/src/main/solr-5-config:/mnt/solr-config
@@ -12,8 +12,8 @@ services:
 
     mongo:
       image: mongo:3.2.9
-      ports:
-          - 27017:27017
+      #ports:
+      #    - 27017:27017
       volumes:
           - ols-mongo-data:/data/db
       command:
@@ -81,7 +81,7 @@ services:
         - ols.customisation.short-title=ANNO
         - ols.customisation.web=https://annosaxfdm.de
         - ols.customisation.twitter=
-        - ols.customisation.org=https://annosaxfdm.de/contact/
+        - ols.customisation.org=
         - ols.customisation.backgroundImage=/img/background_trial.jpg
         - ols.customisation.backgroundColor=#0080FF
         - ols.customisation.issuesPage=https://github.com/annosaxfdm/ols/issues
@@ -92,7 +92,7 @@ services:
         - ols-downloads:/mnt/downloads
         - package:/package
       ports:
-      - 8085:8080
+      - ${OLS_WEB_PORT}:8080
 
 volumes:
     ols-solr-data:
