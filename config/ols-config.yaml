@@ -2,20 +2,32 @@
 
 ontologies:
 - activity_status: active
-  build: {checkout: 'git clone https://github.com/EBISPOT/duo.git', path: ., system: git}
-  contact: {email: mcourtot@gmail.com, github: mcourtot, label: Melanie Courtot}
+  #build: {checkout: 'git clone https://github.com/annosaxfdm/ontology.git', path: ., system: git}
+  contact: {email: konrad.hoeffner@imise.uni-leipzig.de, github: konradhoeffner, label: Konrad Höffner}
   description: ANNO is an ontology for anthropological notation
   homepage: https://annosaxfdm.de
   id: anno
   layout: ontology_detail
-  license: {label: CC-BY, logo: 'http://mirrors.creativecommons.org/presskit/buttons/80x15/png/by.png',
-            url: 'http://creativecommons.org/licenses/by/3.0/'}
+  #license: {label: CC-BY, logo: 'http://mirrors.creativecommons.org/presskit/buttons/80x15/png/by.png',
+  #          url: 'http://creativecommons.org/licenses/by/3.0/'}
   ontology_purl: https://github.com/annosaxfdm/ols/releases/download/22.08/anno.owl
   products:
     - {id: anno.owl, ontology_purl: 'https://github.com/annosaxfdm/ols/releases/download/22.08/anno.owl'}
   title: The Anthropological Notation Ontology
   tracker: https://github.com/annosaxfdm/ols
   preferred_root_term:
-    - https://www.test.de/ontologies/ont#Anatomical_location
-    - https://www.test.de/ontologies/ont#Bone
-    - https://www.test.de/ontologies/ont#Landmark
+    - https://www.imise.uni-leipzig.de/ontologies/anno#Anatomical_location
+    - https://www.imise.uni-leipzig.de/ontologies/anno#Bone
+    - https://www.imise.uni-leipzig.de/ontologies/anno#Landmark
+- activity_status: active
+  description: The VIVO ontology represents researchers in the context of their experience, outputs, interests, accomplishments, and associated institutions.
+  homepage: https://bioportal.bioontology.org/ontologies/VIVO
+  id: vivo
+  layout: ontology_detail
+  license: {label: CC-BY, logo: 'http://mirrors.creativecommons.org/presskit/buttons/80x15/png/by.png',
+            url: 'http://creativecommons.org/licenses/by/3.0/'}
+  ontology_purl:  https://github.com/vivo-project/VIVO/raw/develop/home/src/main/resources/rdf/tbox/filegraph/vivo.owl
+  products:
+    - {id: vivo.owl, ontology_purl: 'https://github.com/vivo-project/VIVO/raw/develop/home/src/main/resources/rdf/tbox/filegraph/vivo.owl'}
+  title: VIVO
+  tracker: https://github.com/vivo-ontologies/vivo-ontology
