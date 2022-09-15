@@ -30,6 +30,16 @@ ontologies:
   title: HITO
   tracker: https://github.com/hitontology/ontology
 - activity_status: active
+  description: Semantic Network of Information Management in Hospitals Meta Ontology
+  homepage: https://www.snik.eu
+  id: snik
+  layout: ontology_detail
+  ontology_purl: https://raw.githubusercontent.com/snikproject/ontology/master/meta.ttl
+  products:
+    - {id: meta.ttl, ontology_purl: 'https://raw.githubusercontent.com/snikproject/ontology/master/meta.ttl'}
+  title: SNIK
+  tracker: https://github.com/snikproject/ontology
+- activity_status: active
   description: The VIVO ontology represents researchers in the context of their experience, outputs, interests, accomplishments, and associated institutions.
   homepage: https://bioportal.bioontology.org/ontologies/VIVO
   id: vivo
