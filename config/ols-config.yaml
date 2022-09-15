@@ -20,6 +20,16 @@ ontologies:
     - https://www.imise.uni-leipzig.de/ontologies/anno#Bone
     - https://www.imise.uni-leipzig.de/ontologies/anno#Landmark
 - activity_status: active
+  description: Health IT Ontology
+  homepage: https://hitontology.eu
+  id: hito
+  layout: ontology_detail
+  ontology_purl: https://raw.githubusercontent.com/hitontology/ontology/master/ontology.ttl
+  products:
+    - {id: hito.ttl, ontology_purl: 'https://raw.githubusercontent.com/hitontology/ontology/master/ontology.ttl'}
+  title: HITO
+  tracker: https://github.com/hitontology/ontology
+- activity_status: active
   description: The VIVO ontology represents researchers in the context of their experience, outputs, interests, accomplishments, and associated institutions.
   homepage: https://bioportal.bioontology.org/ontologies/VIVO
   id: vivo
