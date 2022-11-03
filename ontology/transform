@@ -1,0 +1,15 @@
+# work around the missing multi language support of OLS
+
+SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+SOURCE=$SCRIPT_DIR/anno.owl
+TARGET=$SCRIPT_DIR/anno-ols.owl
+
+cp $SOURCE $TARGET
+# OLS can only display one label, other labels need to be synonyms
+sed -i 's|rdfs:label xml:lang="la">\([^<]*\)</rdfs:label|skos:altLabel>\1 (la)</skos:altLabel|' $TARGET
+sed -i 's|rdfs:label xml:lang="de">\([^<]*\)</rdfs:label|skos:altLabel>\1 (de)</skos:altLabel|' $TARGET
+# remove language tags that aren't English and add tag at the end
+sed -i 's| xml:lang="la">\([^<]*\)|>\1 (la)|' $TARGET
+sed -i 's| xml:lang="de">\([^<]*\)|>\1 (de)|' $TARGET
+# prevent English language tag literals from hiding ones without one
+sed -i 's|xml:lang="en"||' $TARGET

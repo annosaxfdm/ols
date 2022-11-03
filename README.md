@@ -9,6 +9,8 @@ This is an adapted fork of [OLS](https://github.com/EBISPOT/OLS) for the [ANNO](
     cp .env.dist .env
     docker compose up --build
 
+During the development phase, put `anno.owl` into `./ontology` and run `./ontology/transform`.
+
 ## Original OLS Documentation
 
 Ontology Lookup Service from SPOT at EBI.
