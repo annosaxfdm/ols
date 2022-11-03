@@ -3,8 +3,9 @@ services:
         image: ebispot/ols-solr:latest
         environment:
           - SOLR_HOME=/mnt/solr-config
-        #ports:
-        #  - 8983:8983
+        # admin interface for debugging: open http://localhost:8983/solr/#/ in a browser
+        ports:
+          - 127.0.0.1:8983:8983
         volumes:
           - ols-solr-data:/var/solr
           - ./ols-solr/src/main/solr-5-config:/mnt/solr-config
