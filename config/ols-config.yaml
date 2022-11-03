@@ -31,6 +31,8 @@ ontologies:
     - https://www.imise.uni-leipzig.de/ontologies/anno#Anatomical_location
     - https://www.imise.uni-leipzig.de/ontologies/anno#Bone
     - https://www.imise.uni-leipzig.de/ontologies/anno#Landmark
+
+ontologies_deactivated:
 - activity_status: active
   description: Health IT Ontology
   homepage: https://hitontology.eu
