@@ -8,6 +8,17 @@ ontologies:
   homepage: https://annosaxfdm.de
   id: anno
   layout: ontology_detail
+  synonym_property:
+    - http://www.w3.org/2004/02/skos/core#altLabel
+  # label seems to be ignored as synonym property
+    - http://www.w3.org/2000/01/rdf-schema#label
+  definition_property:
+    - https://ols.imise.uni-leipzig.de/ontologies/anno#definition
+  #hierarchical_property:
+  #  - http://www.w3.org/2000/01/rdf-schema#subClassOf
+  #hidden_property:
+  #base_uri:
+  #  -
   #license: {label: CC-BY, logo: 'http://mirrors.creativecommons.org/presskit/buttons/80x15/png/by.png',
   #          url: 'http://creativecommons.org/licenses/by/3.0/'}
   ontology_purl: https://github.com/annosaxfdm/ontology/releases/latest/download/anno.owl
