@@ -1,3 +1,4 @@
+# syntax=docker/dockerfile:1
 FROM solr:5.3.1
 
 USER root
