@@ -22,9 +22,9 @@ ontologies:
   #license: {label: CC-BY, logo: 'http://mirrors.creativecommons.org/presskit/buttons/80x15/png/by.png',
   #          url: 'http://creativecommons.org/licenses/by/3.0/'}
   #ontology_purl: https://github.com/annosaxfdm/ontology/releases/latest/download/anno.owl
-  ontology_purl: file:///ontology/anno-ols.owl
+  ontology_purl: https://github.com/annosaxfdm/ontology/releases/latest/download/anno-ols.owl
   products:
-    - {id: anno.owl, ontology_purl: 'file:///ontology/anno.owl'}
+    - {id: anno.owl, ontology_purl: 'https://github.com/annosaxfdm/ontology/releases/latest/download/anno.owl'}
   title: The Anthropological Notation Ontology
   tracker: https://github.com/annosaxfdm/ols
   preferred_root_term:

@@ -9,7 +9,7 @@ This is an adapted fork of [OLS](https://github.com/EBISPOT/OLS) for the [ANNO](
     cp .env.dist .env
     docker compose up --build
 
-During the development phase, put `anno.owl` into `./ontology` and run `./ontology/transform`.
+For ontology admins: When creating a new [release](https://github.com/annosaxfdm/ontology/releases) of the ANNO ontology, download `anno.owl`, run `./ontology/transform` to transform it into `anno-ols.owl` and add that to the release.
 
 ## Original OLS Documentation
 
