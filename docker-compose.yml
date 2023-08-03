@@ -60,6 +60,7 @@ services:
         - ols-neo4j-data:/mnt/neo4j
         - ols-downloads:/mnt/downloads
         - package:/package
+        - ./config:/config
       depends_on:
         ols-config-importer:
           condition: service_completed_successfully

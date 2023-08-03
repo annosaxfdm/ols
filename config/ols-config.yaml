@@ -10,59 +10,12 @@ ontologies:
   layout: ontology_detail
   #license: {label: CC-BY, logo: 'http://mirrors.creativecommons.org/presskit/buttons/80x15/png/by.png',
   #          url: 'http://creativecommons.org/licenses/by/3.0/'}
-  ontology_purl: https://github.com/annosaxfdm/ontology/releases/latest/download/anno.owl
+  ontology_purl: file:///config/anno.owl
   products:
-    - {id: anno.owl, ontology_purl: 'https://github.com/annosaxfdm/ontology/releases/latest/download/anno.owl'}
+    - {id: anno.owl, ontology_purl: 'file:///config/anno.owl'}
   title: The Anthropological Notation Ontology
   tracker: https://github.com/annosaxfdm/ols
   preferred_root_term:
     - https://www.imise.uni-leipzig.de/ontologies/anno#Anatomical_location
     - https://www.imise.uni-leipzig.de/ontologies/anno#Bone
     - https://www.imise.uni-leipzig.de/ontologies/anno#Landmark
-- activity_status: active
-  description: Health IT Ontology
-  homepage: https://hitontology.eu
-  id: hito
-  layout: ontology_detail
-  ontology_purl: https://raw.githubusercontent.com/hitontology/ontology/master/ontology.ttl
-  products:
-    - {id: hito.ttl, ontology_purl: 'https://raw.githubusercontent.com/hitontology/ontology/master/ontology.ttl'}
-  title: HITO
-  tracker: https://github.com/hitontology/ontology
-- activity_status: active
-  description: Semantic Network of Information Management in Hospitals Meta Ontology
-  homepage: https://www.snik.eu
-  id: snik
-  layout: ontology_detail
-  ontology_purl: https://raw.githubusercontent.com/snikproject/ontology/master/meta.ttl
-  products:
-    - {id: meta.ttl, ontology_purl: 'https://raw.githubusercontent.com/snikproject/ontology/master/meta.ttl'}
-  title: SNIK
-  tracker: https://github.com/snikproject/ontology
-- activity_status: active
-  description: The VIVO ontology represents researchers in the context of their experience, outputs, interests, accomplishments, and associated institutions.
-  homepage: https://bioportal.bioontology.org/ontologies/VIVO
-  id: vivo
-  layout: ontology_detail
-  license: {label: CC-BY, logo: 'http://mirrors.creativecommons.org/presskit/buttons/80x15/png/by.png',
-            url: 'http://creativecommons.org/licenses/by/3.0/'}
-  ontology_purl: https://github.com/vivo-project/VIVO/raw/develop/home/src/main/resources/rdf/tbox/filegraph/vivo.owl
-  products:
-    - {id: vivo.owl, ontology_purl: 'https://github.com/vivo-project/VIVO/raw/develop/home/src/main/resources/rdf/tbox/filegraph/vivo.owl'}
-  title: VIVO
-  tracker: https://github.com/vivo-ontologies/vivo-ontology
-- activity_status: active
-  description: The RDFBones core ontology for osteological research data from anthropological investigations.
-  homepage: https://github.com/RDFBones/RDFBones-O
-  id: bones
-  layout: ontology_detail
-  ontology_purl: https://raw.githubusercontent.com/RDFBones/RDFBones-O/master/RDFBones-main.owl
-  products:
-    - {id: RDFBones-main.owl, ontology_purl: 'https://raw.githubusercontent.com/RDFBones/RDFBones-O/master/RDFBonesSubset.owl'}
-    - {id: CIDOC-CRM-RDFBonesSubset.owl, ontology_purl: 'https://raw.githubusercontent.com/RDFBones/RDFBones-O/master/CIDOC-CRM-RDFBonesSubset.owl'}
-    - {id: FMA-RDFBonesSubset.owl, ontology_purl: 'https://raw.githubusercontent.com/RDFBones/RDFBones-O/master/FMA-RDFBonesSubset.owl'}
-    - {id: OBI-RDFBonesSubset.owl, ontology_purl: 'https://raw.githubusercontent.com/RDFBones/RDFBones-O/master/OBI-RDFBonesSubset.owl'}
-    - {id: RDFBones-RIOs-EntireBoneOrgan.owl, ontology_purl: 'https://raw.githubusercontent.com/RDFBones/RDFBones-O/master/RDFBones-RIOs-EntireBoneOrgan.owl'}
-    - {id: SIO-RDFBonesSubset.owl, ontology_purl: 'https://raw.githubusercontent.com/RDFBones/RDFBones-O/master/SIO-RDFBonesSubset.owl'}
-  title: RDF Bones
-  tracker: https://github.com/RDFBones/RDFBones-O
