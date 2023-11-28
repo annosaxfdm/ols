@@ -11,6 +11,16 @@ This is an adapted fork of [OLS](https://github.com/EBISPOT/OLS) for the [ANNO](
 
 For ontology admins: When creating a new [release](https://github.com/annosaxfdm/ontology/releases) of the ANNO ontology, download `anno.owl`, run `./ontology/transform` to transform it into `anno-ols.owl` and add that to the release.
 
+## How to fix "library initialization failed - unable to allocate file descriptor table - out of memoryAborted"
+
+This happens on Arch Linux where the default maximum number of open files has increased for Docker, which causes a memory bug in Java 8.
+The workaround is to create the directories and files `/etc/systemd/system/docker.service.d/override.conf` and `/etc/systemd/system/containerd.service.d/override.conf` both with this content and restart the PC:
+
+```
+[Service]
+LimitNOFILE=1048576
+```
+
 ## Original OLS Documentation
 
 Ontology Lookup Service from SPOT at EBI.
@@ -34,11 +44,11 @@ from the core website. We provide services to build a Solr index and a
 Neo4j index. The Solr index is used to provide text-based queries over
 the ontologies while the Neo4j index is used to query the ontology
 structure and is the primary driver of the OLS REST API.
- 
+
 OLS has been developed with the Spring Data and Spring Boot framework.
 You can build this project with Maven and the following Spring Boot
 applications will be available to run.
- 
+
 All of the apps are available under the ols-apps module.
 
 * [ols-apps/ols-solr-app](ols-apps/ols-solr-app) - Spring Boot
@@ -99,26 +109,26 @@ To build OLS, in the root directory of OLS, run:
 
 `[ERROR] Failed to execute goal on project ols-neo4j: Could not resolve dependencies for project uk.ac.ebi.spot:ols-neo4j:jar:3.2.1-SNAPSHOT: Failed to collect dependencies at org.springframework.data:spring-data-neo4j:jar:3.4.5.RELEASE -> org.neo4j:neo4j-cypher-dsl:jar:2.0.1: Failed to read artifact descriptor for org.neo4j:neo4j-cypher-dsl:jar:2.0.1: Could not transfer artifact org.neo4j:neo4j-cypher-dsl:pom:2.0.1 from/to maven-neo4j (https://m2.neo4j.org/content/repositories/releases/): Failed to transfer file https://m2.neo4j.org/content/repositories/releases/org/neo4j/neo4j-cypher-dsl/2.0.1/neo4j-cypher-dsl-2.0.1.pom with status code 502 -> [Help 1]`
 
-To correct this, copy the contents of the `build-fix` directory into your Maven 
+To correct this, copy the contents of the `build-fix` directory into your Maven
 repository under `~/.m2/repository`.
 
-Run `mvn clean package` again. OLS should now build successfully. 
+Run `mvn clean package` again. OLS should now build successfully.
 
 ### Other build errors
 Other build errors you may come across are the following:
 
 1. Wrong version of Java used:
 
-`[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:3.1:compile (default-compile) on project ols-solr: Compilation failure: Compilation failure: 
+`[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:3.1:compile (default-compile) on project ols-solr: Compilation failure: Compilation failure:
  [ERROR] /Users/james/OLS/ols-solr/src/main/java/uk/ac/ebi/spot/ols/config/SolrContext.java:[15,24] package javax.annotation does not exist
  [ERROR] /Users/james/OLS/ols-solr/src/main/java/uk/ac/ebi/spot/ols/config/SolrContext.java:[25,4] cannot find symbol
  [ERROR]  symbol:  class Resource
  [ERROR]  location: class uk.ac.ebi.spot.ols.config.SolrContext
- [ERROR] -> [Help 1]` 
- 
-This is the error you get when you compile OLS with Java 11. The fix for this 
-build error is to ensure your Maven installation is indeed using Java 8 for 
-compilation.  
+ [ERROR] -> [Help 1]`
+
+This is the error you get when you compile OLS with Java 11. The fix for this
+build error is to ensure your Maven installation is indeed using Java 8 for
+compilation.
 
 ## Customisation
 
@@ -130,7 +140,7 @@ It is possible to customise several branding options in `ols-web/src/main/resour
 * `ols.customisation.short-title` — A shorter version of the custom title, e.g. "MYOLS"
 * `ols.customisation.description` — A description of the instance
 * `ols.customisation.org` — The organisation hosting your instance
-* `ols.customisation.hideGraphView` — Set to true to hide the graph view 
+* `ols.customisation.hideGraphView` — Set to true to hide the graph view
 * `ols.customisation.errorMessage` — Message to show on error pages
 * `ols.customisation.ontologyAlias` — A custom word or phrase to use instead of "Ontology", e.g. "Data Dictionary"
 * `ols.customisation.ontologyAliasPlural` — As `ontologyAlias` but plural, e.g. "Data Dictionaries"
