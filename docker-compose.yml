@@ -1,15 +1,19 @@
 services:
     solr:
-        image: ebispot/ols-solr:latest
-        environment:
-          - SOLR_HOME=/mnt/solr-config
-        # admin interface for debugging: open http://localhost:8983/solr/#/ in a browser
-        ports:
-          - 127.0.0.1:8983:8983
-        volumes:
-          - ols-solr-data:/var/solr
-          - ./ols-solr/src/main/solr-5-config:/mnt/solr-config
-        command: ["-Dsolr.solr.home=/mnt/solr-config", "-Dsolr.data.dir=/var/solr", "-f"]
+      image: ebispot/ols-solr:latest
+      ulimits:
+        nofile:
+          soft: 65536
+          hard: 65536
+      environment:
+        - SOLR_HOME=/mnt/solr-config
+      # admin interface for debugging: open http://localhost:8983/solr/#/ in a browser
+      ports:
+        - 127.0.0.1:8983:8983
+      volumes:
+        - ols-solr-data:/var/solr
+        - ./ols-solr/src/main/solr-5-config:/mnt/solr-config
+      command: ["-Dsolr.solr.home=/mnt/solr-config", "-Dsolr.data.dir=/var/solr", "-f"]
 
     mongo:
       image: mongo:3.2.9
@@ -37,6 +41,10 @@ services:
 
     ols-config-importer:
       build: ./ols-apps/ols-config-importer
+      ulimits:
+        nofile:
+          soft: 65536
+          hard: 65536
       environment:
         - spring.data.mongodb.host=mongo
         - ols.ontology.config=file:///config/ols-config.yaml
@@ -54,6 +62,10 @@ services:
 
     ols-indexer:
       build: ./ols-apps/ols-indexer
+      ulimits:
+        nofile:
+          soft: 65536
+          hard: 65536
       environment:
         - spring.data.solr.host=http://solr:8983/solr
         - spring.data.mongodb.host=mongo
@@ -68,6 +80,10 @@ services:
 
     ols-web:
       build: ./ols-web
+      ulimits:
+        nofile:
+          soft: 65536
+          hard: 65536
       depends_on:
         ols-indexer:
           condition: service_completed_successfully
