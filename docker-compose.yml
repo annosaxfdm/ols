@@ -14,6 +14,7 @@ services:
         - ols-solr-data:/var/solr
         - ./ols-solr/src/main/solr-5-config:/mnt/solr-config
       command: ["-Dsolr.solr.home=/mnt/solr-config", "-Dsolr.data.dir=/var/solr", "-f"]
+      restart: unless-stopped
 
     mongo:
       image: mongo:3.2.9
@@ -23,6 +24,7 @@ services:
           - ols-mongo-data:/data/db
       command:
           - "--quiet"
+      restart: unless-stopped
 
     # For easier development, expect olsync as a sibling directory. Move to Git submodule later.
     olsync:
@@ -111,6 +113,7 @@ services:
         - package:/package
       ports:
       - ${OLS_WEB_PORT}:8080
+      restart: unless-stopped
 
 volumes:
     ols-solr-data:
