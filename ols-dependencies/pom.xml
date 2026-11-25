@@ -16,9 +16,9 @@
     <modelVersion>4.0.0</modelVersion>
 
     <properties>
-        <owlapi.version>5.1.14</owlapi.version>
+        <owlapi.version>5.1.20</owlapi.version>
         <HermiT.version>1.4.3.517</HermiT.version>
-        <elk.version>0.5.0-SNAPSHOT</elk.version>
+        <elk.version>0.6.0</elk.version>
         <commons-cli.version>1.2</commons-cli.version>
         <springboot.maven>1.2.5.RELEASE</springboot.maven>
         <mongodb.version>2.14.3</mongodb.version>
@@ -97,8 +97,8 @@
                 </exclusions>
             </dependency>
             <dependency>
-                <groupId>org.semanticweb.elk</groupId>
-                <artifactId>elk-owlapi5</artifactId>
+                <groupId>io.github.liveontologies</groupId>
+                <artifactId>elk-owlapi</artifactId>
                 <version>${elk.version}</version>
                 <exclusions>
                     <exclusion>
