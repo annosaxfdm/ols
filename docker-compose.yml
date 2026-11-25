@@ -17,7 +17,8 @@ services:
       restart: unless-stopped
 
     mongo:
-      image: mongo:3.2.9
+      image: mongo:5.0.33 # newest MongoDB supported by the legacy driver; 5.1+ rejects OP_QUERY
+      environment: [MONGO_INITDB_ROOT_USERNAME=root, "MONGO_INITDB_ROOT_PASSWORD=${MONGO_ROOT_PASSWORD:?Set MONGO_ROOT_PASSWORD in .env}"]
       #ports:
       #    - 27017:27017
       volumes:
@@ -49,6 +50,7 @@ services:
           hard: 65536
       environment:
         - spring.data.mongodb.host=mongo
+        - 'SPRING_APPLICATION_JSON={"spring":{"data":{"mongodb":{"username":"root","password":"${MONGO_ROOT_PASSWORD}","authentication-database":"admin"}}}}'
         - ols.ontology.config=file:///config/ols-config.yaml
         - ols.obofoundry.ontology.config=file:///olsync/obo-config.yaml
       volumes:
@@ -71,6 +73,7 @@ services:
       environment:
         - spring.data.solr.host=http://solr:8983/solr
         - spring.data.mongodb.host=mongo
+        - 'SPRING_APPLICATION_JSON={"spring":{"data":{"mongodb":{"username":"root","password":"${MONGO_ROOT_PASSWORD}","authentication-database":"admin"}}}}'
       volumes:
         - ols-neo4j-data:/mnt/neo4j
         - ols-downloads:/mnt/downloads
@@ -96,6 +99,7 @@ services:
         - ols.customisation.debrand=true
         - spring.data.solr.host=http://solr:8983/solr
         - spring.data.mongodb.host=mongo
+        - 'SPRING_APPLICATION_JSON={"spring":{"data":{"mongodb":{"username":"root","password":"${MONGO_ROOT_PASSWORD}","authentication-database":"admin"}}}}'
         - ols.customisation.logo=/img/logo-blue.svg
         - ols.customisation.title=Anthropological Notation Ontology
         - ols.customisation.short-title=ANNO

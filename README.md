@@ -7,8 +7,8 @@ This is an adapted fork of [OLS](https://github.com/EBISPOT/OLS) for the [ANNO](
     git clone git@github.com:annosaxfdm/ols.git
     cd ols
     cp .env.dist .env
-    docker compose up --build
 
+Set MONGO_ROOT_PASSWORD in .env, then `docker compose up --build`.
 For ontology admins: When creating a new [release](https://github.com/annosaxfdm/ontology/releases) of the ANNO ontology, download `anno.owl`, run `./ontology/transform` to transform it into `anno-ols.owl` and add that to the release.
 
 ## How to fix "library initialization failed - unable to allocate file descriptor table - out of memoryAborted"
