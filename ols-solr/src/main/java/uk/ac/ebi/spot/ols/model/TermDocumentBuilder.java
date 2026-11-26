@@ -191,6 +191,35 @@ public class TermDocumentBuilder {
 		return this;
 	}
 
+    /**
+     * Solr documents are unique by id. Add the language to the id so that the
+     * per-language documents created below do not overwrite each other.
+     */
+    private String getDocumentId(String lang) {
+        return id + "_" + (lang == null || lang.isEmpty() ? "default" : lang);
+    }
+
+    /**
+     * Fall back to English and then to any available label so that every
+     * language document has a usable label for display.
+     */
+    private String getLabel(String lang) {
+        String label = labels.getFirstString(lang, "en");
+        if (label == null) {
+            for (List<String> values : labels.getStrings().values()) {
+                if (!values.isEmpty()) {
+                    return values.get(0);
+                }
+            }
+        }
+        return label != null ? label : shortForm;
+    }
+
+    private String getOntologyTitle(String lang) {
+        String title = ontologyTitles.get(lang);
+        return title != null ? title : ontologyTitles.get("en");
+    }
+
 	public Collection<TermDocument> createTermDocuments() {
 
         Set<String> languages = new HashSet<>();
@@ -207,17 +236,17 @@ public class TermDocumentBuilder {
 
             docs.add(
                 new TermDocument(
-                    id,
+                    getDocumentId(lang),
                     uri,
                     lang,
                     uri_key,
-                    labels.getFirstString(lang),
+                    getLabel(lang),
                     synonyms.getStrings(lang),
                     descriptions.getStrings(lang),
                     shortForm,
                     oboId,
                     ontologyName,
-                    ontologyTitles.get(lang),
+                    getOntologyTitle(lang),
                     ontologyPrefix,
                     ontologyUri,
                     type,
