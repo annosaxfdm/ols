@@ -13,7 +13,7 @@ ontologies:
   # label seems to be ignored as synonym property
     - http://www.w3.org/2000/01/rdf-schema#label
   definition_property:
-    - https://ols.imise.uni-leipzig.de/ontologies/anno#definition
+    - https://annosaxfdm.de/ontology/definition
   #hierarchical_property:
   #  - http://www.w3.org/2000/01/rdf-schema#subClassOf
   #hidden_property:
